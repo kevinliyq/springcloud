@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableEurekaClient
 @RestController
-public class ServiceHiSpringApplication 
+public class ServiceHelloSpringApplication 
 {
     /**
      * @param args
      */
     public static void main( String[] args )
     {
-        SpringApplication.run(ServiceHiSpringApplication.class, args);
+        SpringApplication.run(ServiceHelloSpringApplication.class, args);
     }
     
     @Value("${server.port}")
