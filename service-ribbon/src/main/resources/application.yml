@@ -4,6 +4,26 @@ server:
 spring:
   application:
     name: service-ribbon
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+        
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+            
+service-hello:
+  ribbon:
+    ConnectTimeout: 250
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 2
+    OkToRetryOnAllOperations: true
+    ReadTimeout: 1000
     
 eureka:
   instance:
@@ -11,5 +31,4 @@ eureka:
     port:  8761
   client:
     serviceUrl:
-      defaultZone: http://${eureka.instance.server}:${eureka.instance.port}/eureka/
-      
+      defaultZone: http://${eureka.instance.server}:${eureka.instance.port}/eureka/          

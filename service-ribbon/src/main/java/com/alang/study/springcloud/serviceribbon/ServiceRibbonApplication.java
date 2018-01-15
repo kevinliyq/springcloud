@@ -9,6 +9,9 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.loadbalancer.AvailabilityFilteringRule;
+import com.netflix.loadbalancer.IRule;
+
 /**
  * 1. Support loadbalance at client part
  * 2. Support hystrix for circuit breaker
@@ -31,4 +34,9 @@ public class ServiceRibbonApplication
     public RestTemplate getRestTemplate(){
     	return new RestTemplate();
     }
+    
+//    @Bean
+//    public IRule ribbonRule() {
+//        return new AvailabilityFilteringRule();
+//    }
 }
