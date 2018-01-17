@@ -1,6 +1,11 @@
 server:
   port: 8764
-
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
 spring:
   application:
     name: service-ribbon
