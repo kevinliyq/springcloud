@@ -22,3 +22,5 @@
 public LoadBalancedRetryPolicyFactory loadBalancedRetryPolicyFactory(SpringClientFactory clientFactory) {
     return new RibbonLoadBalancedRetryPolicyFactory(clientFactory);
 }
+
+5. Support hystrix-dashboard
