@@ -11,7 +11,7 @@ spring:
         git:
           password: 
           searchPaths: respo
-          uri: https://github.com/forezp/SpringcloudConfig/
+          uri: https://github.com/kevinliyq/SpringcloudConfig/
           username: 
       label: master
   
