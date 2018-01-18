@@ -1,7 +1,16 @@
 ---
 server:
-  port: 8888
-  
+  port: 8770
+
+eureka:
+  server:
+    hostname: localhost
+    port: 8761
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.server.hostname}:${eureka.server.port}/eureka/
+
+           
 spring:
   application:
     name: config-server

@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * http request and config file mapping
@@ -17,6 +18,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
  *
  */
 @SpringBootApplication
+@EnableEurekaClient
 @EnableConfigServer
 public class ConfigServerApplication implements CommandLineRunner
 {
