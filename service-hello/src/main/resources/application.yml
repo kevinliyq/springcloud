@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: service-hello
-    
 eureka:
   instance:
     server: localhost
@@ -12,4 +11,15 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.server}:${eureka.instance.port}/eureka/
+
+---
+spring:
+  profiles: eureka-ha
+eureka:
+  instance:
+    server: eureka1
+    port:  8761
+  client:
+    serviceUrl:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8760/eureka/
       
