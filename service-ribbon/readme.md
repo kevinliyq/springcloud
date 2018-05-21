@@ -1,3 +1,8 @@
+Run with:
+http://localhost:8764/hello?name=<value>
+
+The call will round-robin select service on service-hello.
+
 1. add spring-cloud-starter-ribbon to enable ribbon for load balance
 	@EnableDiscoveryClient to register service into eureka
 2. add @LoadBalanced for RestTemplate
@@ -24,3 +29,7 @@ public LoadBalancedRetryPolicyFactory loadBalancedRetryPolicyFactory(SpringClien
 }
 
 5. Support hystrix-dashboard
+http://localhost:8764/hystrix.stream to display some command output
+
+You can also add http://localhost:8764/hystrix.stream into hystrix dashboard to monitor the traffic
+

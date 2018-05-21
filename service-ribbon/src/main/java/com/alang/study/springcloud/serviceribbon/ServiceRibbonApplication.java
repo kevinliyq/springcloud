@@ -22,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+//enable circuit breaker
 @EnableHystrix
 @EnableHystrixDashboard
 public class ServiceRibbonApplication 
