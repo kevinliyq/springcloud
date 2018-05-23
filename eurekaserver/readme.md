@@ -37,8 +37,17 @@ eureka-client cache these discovered service, even eureka-server is down, eureka
    127.0.0.1 eureka1
    127.0.0.1 eureka2
    after set with different hostname than it can present on DS Replicas
+   using --spring.profiles.active=<profile_name> to activate profile
    a. start eureka-server1
    	java -jar target/eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=eureka1
    b. eureka-server2
     java -jar target/eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=eureka2
+    
+6. generate docker image
+   mvn clean package docker:build 
+   then mydocker/eureka-server-<artifaictId> image will be built
+7. eureka-server run command: docker run --name=eureka-server -p 8761:8761 mydocker/eureka-server
+
+   service run command : docker run --link eureka-server:8761 -p 8763:8763 -t mydocker/service-hello
+   link  will attach a network to the container  
    
