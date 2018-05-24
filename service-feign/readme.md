@@ -22,3 +22,6 @@ public CachingSpringLoadBalancerFactory retryabeCachingLBClientFactory(
         SpringClientFactory factory, LoadBalancedRetryPolicyFactory retryPolicyFactory) {
     return new CachingSpringLoadBalancerFactory(factory, retryPolicyFactory, true);
 }
+
+5. run url to have a look
+http://localhost:8765

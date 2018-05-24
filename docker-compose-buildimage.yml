@@ -1,0 +1,11 @@
+version: '3'
+services:
+  eureka-server:
+    build: eurekaserver
+    ports:
+      - 8761:8761
+
+  service-hello:
+    build: service-hello
+    ports:
+      - 8763:8763
