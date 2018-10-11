@@ -1,15 +1,24 @@
 version: '3'
 services:
-  eureka-server:
-    image: mydokcer/eureka-server
+  eurekaserver1: 
+    image: springcloud_eureka-server
     restart: always
+    environment:
+      - spring-profiler-active=eureka1
+    networks:
+      - eureka-net
     ports:
       - 8761:8761
 
-  service-hello:
-    image: mydocker/service-hello
+  eurekaserver2: 
+    image: springcloud_eureka-server
     restart: always
-    links:
-      - eureka-server:8761
+    environment:
+      - spring-profiler-active=eureka2
     ports:
-      - 8763:8763
+      - 8760:8761
+    networks:
+      - eureka-net
+networks:
+  eureka-net:
+    driver: bridge
