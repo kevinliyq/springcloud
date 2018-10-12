@@ -25,3 +25,8 @@ public CachingSpringLoadBalancerFactory retryabeCachingLBClientFactory(
 
 5. run url to have a look
 http://localhost:8765
+
+6. handle Exception
+   there are two kinds of way to handle exception:
+   1. Add @ExceptionHandler in controller internal and handle the exception
+   2. Add @ControllerAdvice to have a global Exception control

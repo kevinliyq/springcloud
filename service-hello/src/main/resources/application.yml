@@ -9,6 +9,8 @@ eureka:
     server: localhost
     port:  8761
   client:
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://${eureka.instance.server}:${eureka.instance.port}/eureka/
 
@@ -16,20 +18,30 @@ eureka:
 spring:
   profiles: eureka-ha
 eureka:
-  instance:
-    server: eureka1
-    port:  8761
   client:
     serviceUrl:
-      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8760/eureka/
+      defaultZone: http://eurekaserver1:8761/eureka/,http://eurekaserver2:8761/eureka/
       
 ---
 spring:
-  profiles: eureka-docker
+  profiles: docker
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: service-hello
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+      
+---
+spring:
+  profiles: eureka-docker-ha
 server:
   port: 8763
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://eurekaserver1:8761/eureka/,http://eurekaserver2:8761/eureka/
       
