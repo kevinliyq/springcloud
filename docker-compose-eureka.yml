@@ -1,0 +1,9 @@
+version: '3'
+services:
+  eureka-server: 
+    image: mydocker/eureka-server 
+    restart: always
+    environment:
+      - spring-profiler-active=docker
+    ports:
+      - 8761:8761

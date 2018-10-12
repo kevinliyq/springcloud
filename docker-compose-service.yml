@@ -1,0 +1,17 @@
+version: '3'
+services:
+  service-hello:
+    image: mydocker/service-hello
+    restart: always
+    environment:
+      - spring-profiler-active=docker
+    ports:
+      - 8762:8762 
+
+  service-hello2:
+    image: mydocker/service-hello
+    restart: always
+    environment:
+      - spring-profiler-active=docker
+    ports:
+      - 8763:8762 
