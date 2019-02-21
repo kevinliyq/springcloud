@@ -1,0 +1,60 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      
+      
+---
+spring:
+  profiles: eureka1
+eureka:
+  instance:
+    hostname: eurekaserver1
+  client:
+      serviceUrl:
+        defaultZone: http://eurekaserver2:8761/eureka/
+        register-with-eureka: true
+        fetchRegistry: true
+
+---
+spring:
+  profiles: eureka2
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: eurekaserver2
+  client:
+      serviceUrl:
+        defaultZone: http://eurekaserver1:8761/eureka/
+        register-with-eureka: true
+        fetchRegistry: true
+        
+---
+spring:
+  profiles: docker
+  application:
+    name: eureka-server
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: eureka-server
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 30
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+
