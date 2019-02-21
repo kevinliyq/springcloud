@@ -1,3 +1,6 @@
+build: mvn clean package docker:build
+start: docker run --link eureka-server:8761 -p 8765:8765 -t mydocker/service-feign
+
 1. Feign is a fake HTTP client, which can use JAX-RS Annotation to call a remove HTTP service
 	@SpringCloudApplication will register service and discover clients 
 2. Feign takes along with Ribbon for load balance and circuit breaker.
@@ -30,3 +33,5 @@ http://localhost:8765
    there are two kinds of way to handle exception:
    1. Add @ExceptionHandler in controller internal and handle the exception
    2. Add @ControllerAdvice to have a global Exception control
+
+
