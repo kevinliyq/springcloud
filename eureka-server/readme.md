@@ -55,5 +55,8 @@ docker run --name=eureka-server -p 8761:8761 mydocker/eureka-server
  8. uses docker-compose can be used to manage multiple containers. 
  can build image and manage start/stop container.
     docker-compose -f <*.yml> up|stop
-    http://www.ruanyifeng.com/blog/2018/02/docker-wordpress-tutorial.html 
+    http://www.ruanyifeng.com/blog/2018/02/docker-wordpress-tutorial.html
+ 
+ 9. attach to container after running
+  docker exec -i -t <container_id> /bin/bash
    

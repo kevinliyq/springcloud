@@ -28,3 +28,17 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://eureka1:8761/eureka/,http://eureka2:8760/eureka/
+
+---
+spring:
+  profiles: docker
+server:
+  port: 8765
+eureka:
+  instance:
+    hostname: service-feign
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+      
