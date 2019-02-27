@@ -27,6 +27,8 @@ spring:
   profiles: docker
 server:
   port: 8762
+logging:
+  path: /working/logs/
 eureka:
   instance:
     hostname: service-hello

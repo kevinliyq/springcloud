@@ -17,9 +17,12 @@ where
 docker run -d --name=eureka-server -p 8761:8761 mydocker/eureka-server
 
 3. start service-hello:
-docker run -d --name=service-hello --link eureka-server:8761 -p 8762:8762 -t mydocker/service-hello
+docker run -d --name=service-hello --link eureka-server:8761 -p 8762:8762 -t -v /tmp:/working/logs mydocker/service-hello
 docker run -d --name=service-hello2 --link eureka-server:8761 -p 8763:8762 -t mydocker/service-hello
 where --link link to <container_name>:port
 
 4. start service-feign
 docker run -d --name=service-feign --link eureka-server:8761 -p 8765:8765 -t mydocker/service-feign
+
+5. enter a container with iteractive
+docker exec -i -t service-hello: bash
