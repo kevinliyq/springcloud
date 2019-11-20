@@ -1,0 +1,24 @@
+server:
+  port: 8021
+spring:
+  cloud:
+    name: service-hello-client-sentinel
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8030
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: service-hello-nacos
+
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  sentinel:
+    enabled=true:
