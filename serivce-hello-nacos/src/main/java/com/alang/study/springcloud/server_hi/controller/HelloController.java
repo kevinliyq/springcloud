@@ -1,8 +1,9 @@
 package com.alang.study.springcloud.server_hi.controller;
 
+import com.alang.study.springcloud.server_hi.PropertiesConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,22 +21,14 @@ public class HelloController {
 
 	private Logger logger = LoggerFactory.getLogger(ServiceHelloSpringApplication.class);
 
-	@Value("${server.port}")
-	private String serverPort;
-
-	@Value("${external.config:}")
-	private String config;
-
-	@Value("${profile.name:}")
-	private String profilerName;
-
-	@Value("${age:0}")
-	private int age;
+	@Autowired
+	private PropertiesConfig config;
 
 	@GetMapping(value = "/hello")
 	public String hello(@RequestParam String name) {
-		logger.info("Received request hello with param name {}, config {}, username {}, age {}", name, config, profilerName, age);
-		return "hello " + name + " from " + serverPort;
+		logger.info("Received request hello with param name {}, config {}, username {}, age {}, common name from ext {}, from shared {}", name, config, config.getProfilerName(), config.getThreshold(), config
+		.getCommonName(), config.getDebugMode());
+		return "hello " + name + " from " + config.getServerPort();
 	}
 
 	@RequestMapping(value = "/ticket/buy/{userid}", method = RequestMethod.POST)
